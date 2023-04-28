@@ -11,7 +11,7 @@
     if (e.querySelector("textarea")) return "Paragraph";
     return "Unknown";
   };
-  document.querySelectorAll(".Qr7Oae").forEach((e) => {
+  document.querySelector("[role='list']").childNodes.forEach((e) => {
     const qType = type(e);
     const question = e.querySelector("[role=heading]").innerText.trim();
     let answers;

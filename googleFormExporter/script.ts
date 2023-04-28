@@ -17,21 +17,21 @@
     if (e.querySelector("textarea")) return "Paragraph";
     return "Unknown";
   };
-  document.querySelectorAll(".Qr7Oae").forEach((e) => {
-    const qType = type(e);
+  document.querySelector("[role='list']")!.childNodes.forEach((e) => {
+    const qType = type(e as HTMLElement);
     const question = (
-      e.querySelector("[role=heading]") as HTMLElement
+      (e as HTMLElement).querySelector("[role=heading]") as HTMLElement
     ).innerText.trim();
     let answers;
 
     if (qType === "Multiple choice" || qType === "Choose all that apply") {
-      answers = Array.from(e.querySelectorAll(".aDTYNe.snByac.OIC90c")).map(
-        (e) => (e as HTMLElement).innerText
-      );
+      answers = Array.from(
+        (e as HTMLElement).querySelectorAll(".aDTYNe.snByac.OIC90c")
+      ).map((e) => (e as HTMLElement).innerText);
     } else if (qType === "Dropdown") {
-      answers = Array.from(e.querySelectorAll("[jsname='wQNmvb']")).map(
-        (e) => (e as HTMLElement).innerText
-      );
+      answers = Array.from(
+        (e as HTMLElement).querySelectorAll("[jsname='wQNmvb']")
+      ).map((e) => (e as HTMLElement).innerText);
     } else if (
       qType === "Short answer" ||
       qType === "Paragraph" ||
